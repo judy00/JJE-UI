@@ -1,0 +1,50 @@
+{
+  "name": "jje-ui",
+  "version": "0.1.15",
+  "description": "Mike 的 Vue UI 框架",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "preview": "vite preview",
+    "push": "git push && npm publish"
+  },
+  "type": "module",
+  "main": "dist/jje-ui.cjs.js",
+  "module": "dist/jje-ui.es.js",
+  "unpkg": "dist/jje-ui.iife.js",
+  "files": [
+    "dist"
+  ],
+  "author": "mike cheng <https://github.com/MikeCheng1208/> (https://github.com/MikeCheng1208/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeCheng1208/jje-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MikeCheng1208/jje-ui/issues"
+  },
+  "homepage": "https://github.com/MikeCheng1208/jje-ui",
+  "dependencies": {
+    "@unocss/reset": "^0.53.6",
+    "@vueuse/core": "^10.2.1",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@unocss/preset-attributify": "^0.53.6",
+    "@unocss/preset-uno": "^0.53.6",
+    "@unocss/preset-wind": "^0.53.6",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "unocss": "^0.53.6",
+    "vite": "^4.3.9"
+  },
+  "keywords": [
+    "vue",
+    "vue2",
+    "vue3",
+    "vite",
+    "components",
+    "ui"
+  ]
+}
