@@ -1,91 +1,91 @@
-import { getCurrentScope as A, onScopeDispose as I, unref as O, watch as V, ref as h, computed as B, openBlock as _, createElementBlock as y, createElementVNode as w, Fragment as C, renderList as L, toDisplayString as N, createCommentVNode as P } from "vue";
-function F(t) {
-  return A() ? (I(t), !0) : !1;
+import { getCurrentScope as B, onScopeDispose as C, unref as L, watch as S, ref as g, computed as N, openBlock as p, createElementBlock as f, createElementVNode as v, Fragment as b, renderList as I, toDisplayString as w, createCommentVNode as P, pushScopeId as T, popScopeId as F } from "vue";
+function M(e) {
+  return B() ? (C(e), !0) : !1;
 }
-function b(t) {
-  return typeof t == "function" ? t() : O(t);
+function k(e) {
+  return typeof e == "function" ? e() : L(e);
 }
-const k = typeof window < "u", E = () => {
-}, M = /* @__PURE__ */ D();
-function D() {
-  var t;
-  return k && ((t = window == null ? void 0 : window.navigator) == null ? void 0 : t.userAgent) && /* @__PURE__ */ /iP(ad|hone|od)/.test(window.navigator.userAgent);
+const A = typeof window < "u", E = () => {
+}, D = /* @__PURE__ */ R();
+function R() {
+  var e;
+  return A && ((e = window == null ? void 0 : window.navigator) == null ? void 0 : e.userAgent) && /* @__PURE__ */ /iP(ad|hone|od)/.test(window.navigator.userAgent);
 }
-function v(t) {
-  var u;
-  const o = b(t);
-  return (u = o == null ? void 0 : o.$el) != null ? u : o;
+function y(e) {
+  var l;
+  const o = k(e);
+  return (l = o == null ? void 0 : o.$el) != null ? l : o;
 }
-const S = k ? window : void 0;
-function g(...t) {
-  let u, o, n, s;
-  if (typeof t[0] == "string" || Array.isArray(t[0]) ? ([o, n, s] = t, u = S) : [u, o, n, s] = t, !u)
+const O = A ? window : void 0;
+function x(...e) {
+  let l, o, n, u;
+  if (typeof e[0] == "string" || Array.isArray(e[0]) ? ([o, n, u] = e, l = O) : [l, o, n, u] = e, !l)
     return E;
   Array.isArray(o) || (o = [o]), Array.isArray(n) || (n = [n]);
-  const i = [], p = () => {
-    i.forEach((l) => l()), i.length = 0;
-  }, a = (l, c, e, r) => (l.addEventListener(c, e, r), () => l.removeEventListener(c, e, r)), f = V(
-    () => [v(u), b(s)],
-    ([l, c]) => {
-      p(), l && i.push(
-        ...o.flatMap((e) => n.map((r) => a(l, e, r, c)))
+  const i = [], m = () => {
+    i.forEach((r) => r()), i.length = 0;
+  }, c = (r, a, t, s) => (r.addEventListener(a, t, s), () => r.removeEventListener(a, t, s)), _ = S(
+    () => [y(l), k(u)],
+    ([r, a]) => {
+      m(), r && i.push(
+        ...o.flatMap((t) => n.map((s) => c(r, t, s, a)))
       );
     },
     { immediate: !0, flush: "post" }
-  ), m = () => {
-    f(), p();
+  ), h = () => {
+    _(), m();
   };
-  return F(m), m;
+  return M(h), h;
 }
-let x = !1;
-function R(t, u, o = {}) {
-  const { window: n = S, ignore: s = [], capture: i = !0, detectIframe: p = !1 } = o;
+let V = !1;
+function W(e, l, o = {}) {
+  const { window: n = O, ignore: u = [], capture: i = !0, detectIframe: m = !1 } = o;
   if (!n)
     return;
-  M && !x && (x = !0, Array.from(n.document.body.children).forEach((e) => e.addEventListener("click", E)));
-  let a = !0;
-  const f = (e) => s.some((r) => {
-    if (typeof r == "string")
-      return Array.from(n.document.querySelectorAll(r)).some((d) => d === e.target || e.composedPath().includes(d));
+  D && !V && (V = !0, Array.from(n.document.body.children).forEach((t) => t.addEventListener("click", E)));
+  let c = !0;
+  const _ = (t) => u.some((s) => {
+    if (typeof s == "string")
+      return Array.from(n.document.querySelectorAll(s)).some((d) => d === t.target || t.composedPath().includes(d));
     {
-      const d = v(r);
-      return d && (e.target === d || e.composedPath().includes(d));
+      const d = y(s);
+      return d && (t.target === d || t.composedPath().includes(d));
     }
-  }), l = [
-    g(n, "click", (e) => {
-      const r = v(t);
-      if (!(!r || r === e.target || e.composedPath().includes(r))) {
-        if (e.detail === 0 && (a = !f(e)), !a) {
-          a = !0;
+  }), r = [
+    x(n, "click", (t) => {
+      const s = y(e);
+      if (!(!s || s === t.target || t.composedPath().includes(s))) {
+        if (t.detail === 0 && (c = !_(t)), !c) {
+          c = !0;
           return;
         }
-        u(e);
+        l(t);
       }
     }, { passive: !0, capture: i }),
-    g(n, "pointerdown", (e) => {
-      const r = v(t);
-      r && (a = !e.composedPath().includes(r) && !f(e));
+    x(n, "pointerdown", (t) => {
+      const s = y(e);
+      s && (c = !t.composedPath().includes(s) && !_(t));
     }, { passive: !0 }),
-    p && g(n, "blur", (e) => {
+    m && x(n, "blur", (t) => {
       setTimeout(() => {
-        var r;
-        const d = v(t);
-        ((r = n.document.activeElement) == null ? void 0 : r.tagName) === "IFRAME" && !(d != null && d.contains(n.document.activeElement)) && u(e);
+        var s;
+        const d = y(e);
+        ((s = n.document.activeElement) == null ? void 0 : s.tagName) === "IFRAME" && !(d != null && d.contains(n.document.activeElement)) && l(t);
       }, 0);
     })
   ].filter(Boolean);
-  return () => l.forEach((e) => e());
+  return () => r.forEach((t) => t());
 }
-const W = (t, u) => {
-  const o = t.__vccOpts || t;
-  for (const [n, s] of u)
-    o[n] = s;
+const $ = (e, l) => {
+  const o = e.__vccOpts || e;
+  for (const [n, u] of l)
+    o[n] = u;
   return o;
-}, T = {
+}, j = {
   relative: "",
   "w-full": "",
   "h-30px": ""
-}, $ = ["value"], j = {
+}, q = ["value"], z = {
   key: 0,
   absolute: "",
   "top-30px": "",
@@ -94,7 +94,7 @@ const W = (t, u) => {
   "w-full": "",
   "h-auto": "",
   border: "0px x-1px gray-4 solid"
-}, q = ["onClick"], z = {
+}, G = ["onClick"], H = {
   __name: "VButton",
   props: {
     modelValue: {
@@ -107,43 +107,43 @@ const W = (t, u) => {
     }
   },
   emits: ["update:modelValue"],
-  setup(t, { emit: u }) {
-    const o = t, n = h(null), s = h(!1), i = h(!1);
-    R(n, (l) => {
-      s.value = !1;
+  setup(e, { emit: l }) {
+    const o = e, n = g(null), u = g(!1), i = g(!1);
+    W(n, (r) => {
+      u.value = !1;
     });
-    const p = B(() => o.options.suffix ? o.options.suffix.map((l) => o.modelValue.split("@")[0] + l) : []), a = (l) => {
-      u("update:modelValue", l);
-    }, f = () => {
-      s.value = o.modelValue.length !== 0;
-    }, m = (l) => {
-      i.value = !0, s.value = !1, a(l), setTimeout(() => {
+    const m = N(() => o.options.suffix ? o.options.suffix.map((r) => o.modelValue.split("@")[0] + r) : []), c = (r) => {
+      l("update:modelValue", r);
+    }, _ = () => {
+      u.value = o.modelValue.length !== 0;
+    }, h = (r) => {
+      i.value = !0, u.value = !1, c(r), setTimeout(() => {
         i.value = !1;
       }, 300);
     };
-    return V(
+    return S(
       () => o.modelValue,
       () => {
-        i.value || (s.value = o.modelValue.length !== 0);
+        i.value || (u.value = o.modelValue.length !== 0);
       }
-    ), (l, c) => (_(), y("div", T, [
-      w("input", {
+    ), (r, a) => (p(), f("div", j, [
+      v("input", {
         ref_key: "inputRef",
         ref: n,
         "w-full": "",
         "h-full": "",
         "pl-10px": "",
-        value: t.modelValue,
+        value: e.modelValue,
         border: "1px gray-4 solid",
-        onInput: c[0] || (c[0] = (e) => a(e.target.value)),
-        onFocus: f
-      }, null, 40, $),
-      s.value ? (_(), y("ul", j, [
-        (_(!0), y(C, null, L(p.value, (e) => (_(), y("li", {
-          key: e,
+        onInput: a[0] || (a[0] = (t) => c(t.target.value)),
+        onFocus: _
+      }, null, 40, q),
+      u.value ? (p(), f("ul", z, [
+        (p(!0), f(b, null, I(m.value, (t) => (p(), f("li", {
+          key: t,
           border: "0px b-1px gray-4 solid"
         }, [
-          w("a", {
+          v("a", {
             "cursor-pointer": "",
             "w-full": "",
             block: "",
@@ -151,13 +151,34 @@ const W = (t, u) => {
             "pl-10px": "",
             "text-14px": "",
             "hover:bg-gray-1": "",
-            onClick: (r) => m(e)
-          }, N(e), 9, q)
+            onClick: (s) => h(t)
+          }, w(t), 9, G)
         ]))), 128))
       ])) : P("", !0)
     ]));
   }
-}, H = /* @__PURE__ */ W(z, [["__scopeId", "data-v-29595b12"]]);
+}, te = /* @__PURE__ */ $(H, [["__scopeId", "data-v-29595b12"]]);
+const J = (e) => (T("data-v-373871c7"), e = e(), F(), e), K = { class: "flex border-top margin-bottom" }, Q = { class: "timeitem" }, U = /* @__PURE__ */ J(() => /* @__PURE__ */ v("div", { class: "dot" }, null, -1)), X = { class: "content" }, Y = { class: "timestamp" }, Z = {
+  __name: "VTimeline",
+  props: {
+    timeItem: {
+      type: Array,
+      default: () => []
+    }
+  },
+  setup(e) {
+    return (l, o) => (p(), f("div", null, [
+      v("ul", K, [
+        (p(!0), f(b, null, I(e.timeItem, (n, u) => (p(), f("li", Q, [
+          U,
+          v("div", X, w(n.content), 1),
+          v("div", Y, w(n.timestamp), 1)
+        ]))), 256))
+      ])
+    ]));
+  }
+}, oe = /* @__PURE__ */ $(Z, [["__scopeId", "data-v-373871c7"]]);
 export {
-  H as VButton
+  te as VButton,
+  oe as VTimeline
 };
