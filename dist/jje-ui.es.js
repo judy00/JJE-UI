@@ -1,91 +1,91 @@
-import { getCurrentScope as T, onScopeDispose as C, unref as L, watch as I, ref as k, computed as x, openBlock as p, createElementBlock as f, createElementVNode as h, Fragment as w, renderList as g, toDisplayString as S, createCommentVNode as N, useSlots as D, normalizeStyle as E, renderSlot as F } from "vue";
-function j(t) {
-  return T() ? (C(t), !0) : !1;
+import { getCurrentScope as A, onScopeDispose as I, unref as O, watch as V, ref as h, computed as B, openBlock as _, createElementBlock as y, createElementVNode as w, Fragment as C, renderList as L, toDisplayString as N, createCommentVNode as P } from "vue";
+function F(t) {
+  return A() ? (I(t), !0) : !1;
 }
-function V(t) {
-  return typeof t == "function" ? t() : L(t);
+function b(t) {
+  return typeof t == "function" ? t() : O(t);
 }
-const M = typeof window < "u", O = () => {
-}, B = /* @__PURE__ */ R();
-function R() {
+const k = typeof window < "u", E = () => {
+}, M = /* @__PURE__ */ D();
+function D() {
   var t;
-  return M && ((t = window == null ? void 0 : window.navigator) == null ? void 0 : t.userAgent) && /* @__PURE__ */ /iP(ad|hone|od)/.test(window.navigator.userAgent);
+  return k && ((t = window == null ? void 0 : window.navigator) == null ? void 0 : t.userAgent) && /* @__PURE__ */ /iP(ad|hone|od)/.test(window.navigator.userAgent);
 }
 function v(t) {
-  var l;
-  const o = V(t);
-  return (l = o == null ? void 0 : o.$el) != null ? l : o;
+  var u;
+  const o = b(t);
+  return (u = o == null ? void 0 : o.$el) != null ? u : o;
 }
-const P = M ? window : void 0;
-function b(...t) {
-  let l, o, n, u;
-  if (typeof t[0] == "string" || Array.isArray(t[0]) ? ([o, n, u] = t, l = P) : [l, o, n, u] = t, !l)
-    return O;
+const S = k ? window : void 0;
+function g(...t) {
+  let u, o, n, s;
+  if (typeof t[0] == "string" || Array.isArray(t[0]) ? ([o, n, s] = t, u = S) : [u, o, n, s] = t, !u)
+    return E;
   Array.isArray(o) || (o = [o]), Array.isArray(n) || (n = [n]);
-  const m = [], a = () => {
-    m.forEach((s) => s()), m.length = 0;
-  }, i = (s, d, e, r) => (s.addEventListener(d, e, r), () => s.removeEventListener(d, e, r)), c = I(
-    () => [v(l), V(u)],
-    ([s, d]) => {
-      a(), s && m.push(
-        ...o.flatMap((e) => n.map((r) => i(s, e, r, d)))
+  const i = [], p = () => {
+    i.forEach((l) => l()), i.length = 0;
+  }, a = (l, c, e, r) => (l.addEventListener(c, e, r), () => l.removeEventListener(c, e, r)), f = V(
+    () => [v(u), b(s)],
+    ([l, c]) => {
+      p(), l && i.push(
+        ...o.flatMap((e) => n.map((r) => a(l, e, r, c)))
       );
     },
     { immediate: !0, flush: "post" }
-  ), _ = () => {
-    c(), a();
+  ), m = () => {
+    f(), p();
   };
-  return j(_), _;
+  return F(m), m;
 }
-let A = !1;
-function W(t, l, o = {}) {
-  const { window: n = P, ignore: u = [], capture: m = !0, detectIframe: a = !1 } = o;
+let x = !1;
+function R(t, u, o = {}) {
+  const { window: n = S, ignore: s = [], capture: i = !0, detectIframe: p = !1 } = o;
   if (!n)
     return;
-  B && !A && (A = !0, Array.from(n.document.body.children).forEach((e) => e.addEventListener("click", O)));
-  let i = !0;
-  const c = (e) => u.some((r) => {
+  M && !x && (x = !0, Array.from(n.document.body.children).forEach((e) => e.addEventListener("click", E)));
+  let a = !0;
+  const f = (e) => s.some((r) => {
     if (typeof r == "string")
-      return Array.from(n.document.querySelectorAll(r)).some((y) => y === e.target || e.composedPath().includes(y));
+      return Array.from(n.document.querySelectorAll(r)).some((d) => d === e.target || e.composedPath().includes(d));
     {
-      const y = v(r);
-      return y && (e.target === y || e.composedPath().includes(y));
+      const d = v(r);
+      return d && (e.target === d || e.composedPath().includes(d));
     }
-  }), s = [
-    b(n, "click", (e) => {
+  }), l = [
+    g(n, "click", (e) => {
       const r = v(t);
       if (!(!r || r === e.target || e.composedPath().includes(r))) {
-        if (e.detail === 0 && (i = !c(e)), !i) {
-          i = !0;
+        if (e.detail === 0 && (a = !f(e)), !a) {
+          a = !0;
           return;
         }
-        l(e);
+        u(e);
       }
-    }, { passive: !0, capture: m }),
-    b(n, "pointerdown", (e) => {
+    }, { passive: !0, capture: i }),
+    g(n, "pointerdown", (e) => {
       const r = v(t);
-      r && (i = !e.composedPath().includes(r) && !c(e));
+      r && (a = !e.composedPath().includes(r) && !f(e));
     }, { passive: !0 }),
-    a && b(n, "blur", (e) => {
+    p && g(n, "blur", (e) => {
       setTimeout(() => {
         var r;
-        const y = v(t);
-        ((r = n.document.activeElement) == null ? void 0 : r.tagName) === "IFRAME" && !(y != null && y.contains(n.document.activeElement)) && l(e);
+        const d = v(t);
+        ((r = n.document.activeElement) == null ? void 0 : r.tagName) === "IFRAME" && !(d != null && d.contains(n.document.activeElement)) && u(e);
       }, 0);
     })
   ].filter(Boolean);
-  return () => s.forEach((e) => e());
+  return () => l.forEach((e) => e());
 }
-const $ = (t, l) => {
+const W = (t, u) => {
   const o = t.__vccOpts || t;
-  for (const [n, u] of l)
-    o[n] = u;
+  for (const [n, s] of u)
+    o[n] = s;
   return o;
-}, q = {
+}, T = {
   relative: "",
   "w-full": "",
   "h-30px": ""
-}, z = ["value"], G = {
+}, $ = ["value"], j = {
   key: 0,
   absolute: "",
   "top-30px": "",
@@ -94,8 +94,8 @@ const $ = (t, l) => {
   "w-full": "",
   "h-auto": "",
   border: "0px x-1px gray-4 solid"
-}, H = ["onClick"], J = {
-  __name: "MEmailInput",
+}, q = ["onClick"], z = {
+  __name: "VButton",
   props: {
     modelValue: {
       type: String,
@@ -107,27 +107,27 @@ const $ = (t, l) => {
     }
   },
   emits: ["update:modelValue"],
-  setup(t, { emit: l }) {
-    const o = t, n = k(null), u = k(!1), m = k(!1);
-    W(n, (s) => {
-      u.value = !1;
+  setup(t, { emit: u }) {
+    const o = t, n = h(null), s = h(!1), i = h(!1);
+    R(n, (l) => {
+      s.value = !1;
     });
-    const a = x(() => o.options.suffix ? o.options.suffix.map((s) => o.modelValue.split("@")[0] + s) : []), i = (s) => {
-      l("update:modelValue", s);
-    }, c = () => {
-      u.value = o.modelValue.length !== 0;
-    }, _ = (s) => {
-      m.value = !0, u.value = !1, i(s), setTimeout(() => {
-        m.value = !1;
+    const p = B(() => o.options.suffix ? o.options.suffix.map((l) => o.modelValue.split("@")[0] + l) : []), a = (l) => {
+      u("update:modelValue", l);
+    }, f = () => {
+      s.value = o.modelValue.length !== 0;
+    }, m = (l) => {
+      i.value = !0, s.value = !1, a(l), setTimeout(() => {
+        i.value = !1;
       }, 300);
     };
-    return I(
+    return V(
       () => o.modelValue,
       () => {
-        m.value || (u.value = o.modelValue.length !== 0);
+        i.value || (s.value = o.modelValue.length !== 0);
       }
-    ), (s, d) => (p(), f("div", q, [
-      h("input", {
+    ), (l, c) => (_(), y("div", T, [
+      w("input", {
         ref_key: "inputRef",
         ref: n,
         "w-full": "",
@@ -135,15 +135,15 @@ const $ = (t, l) => {
         "pl-10px": "",
         value: t.modelValue,
         border: "1px gray-4 solid",
-        onInput: d[0] || (d[0] = (e) => i(e.target.value)),
-        onFocus: c
-      }, null, 40, z),
-      u.value ? (p(), f("ul", G, [
-        (p(!0), f(w, null, g(a.value, (e) => (p(), f("li", {
+        onInput: c[0] || (c[0] = (e) => a(e.target.value)),
+        onFocus: f
+      }, null, 40, $),
+      s.value ? (_(), y("ul", j, [
+        (_(!0), y(C, null, L(p.value, (e) => (_(), y("li", {
           key: e,
           border: "0px b-1px gray-4 solid"
         }, [
-          h("a", {
+          w("a", {
             "cursor-pointer": "",
             "w-full": "",
             block: "",
@@ -151,62 +151,13 @@ const $ = (t, l) => {
             "pl-10px": "",
             "text-14px": "",
             "hover:bg-gray-1": "",
-            onClick: (r) => _(e)
-          }, S(e), 9, H)
+            onClick: (r) => m(e)
+          }, N(e), 9, q)
         ]))), 128))
-      ])) : N("", !0)
+      ])) : P("", !0)
     ]));
   }
-}, ee = /* @__PURE__ */ $(J, [["__scopeId", "data-v-7a0cd896"]]);
-const K = { class: "vue-pure-table" }, Q = { id: "columns" }, U = {
-  id: "rows",
-  class: "flex-col"
-}, X = { key: 0 }, Y = {
-  __name: "MPureTable",
-  props: {
-    columns: {
-      type: Array,
-      default: () => []
-    },
-    rows: {
-      type: Array,
-      default: () => []
-    }
-  },
-  setup(t) {
-    const l = t, o = D(), n = x(() => l.columns.map((a) => a.field)), u = x(() => l.rows.map((a) => {
-      const i = [];
-      return Object.keys(a).forEach((c, _) => {
-        n.value[_] && i.push(a[n.value[_]]);
-      }), i;
-    })), m = (a) => Object.keys(o).includes(a);
-    return (a, i) => (p(), f("div", K, [
-      h("ul", Q, [
-        (p(!0), f(w, null, g(l.columns, (c) => (p(), f("li", {
-          key: c.label,
-          class: "table_columns",
-          style: E(c.style)
-        }, S(c.label), 5))), 128))
-      ]),
-      h("ul", U, [
-        (p(!0), f(w, null, g(u.value, (c, _) => (p(), f("li", { key: _ }, [
-          h("ul", null, [
-            (p(!0), f(w, null, g(c, (s, d) => (p(), f("li", {
-              key: s.id,
-              style: E(l.columns[d].style)
-            }, [
-              m(l.columns[d].field) ? F(a.$slots, l.columns[d].field, {
-                key: 1,
-                data: { rowData: s, rowTarget: u.value[_] }
-              }, void 0, !0) : (p(), f("p", X, S(s), 1))
-            ], 4))), 128))
-          ])
-        ]))), 128))
-      ])
-    ]));
-  }
-}, te = /* @__PURE__ */ $(Y, [["__scopeId", "data-v-947644cc"]]);
+}, H = /* @__PURE__ */ W(z, [["__scopeId", "data-v-29595b12"]]);
 export {
-  ee as MEmailInput,
-  te as MPureTable
+  H as VButton
 };

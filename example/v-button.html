@@ -9,7 +9,7 @@
   <body>
     <div id="app">
       <div style="width: 500px; margin: 20px">
-        <m-email-input v-model="message" :options="options"></m-email-input>
+        <v-button v-model="message" :options="options"></v-button>
       </div>
     </div>
     <script type="importmap">
@@ -21,10 +21,10 @@
     </script>
     <script type="module">
       import { createApp, ref } from "vue";
-      import { MEmailInput } from "../dist/jje-ui.es.js";
+      import { VButton } from "../dist/jje-ui.es.js";
       createApp({
         components: {
-          MEmailInput,
+          VButton,
         },
         setup() {
           const message = ref("");
