@@ -1,6 +1,6 @@
 {
   "name": "jje-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JJE 的 Vue UI 框架",
   "scripts": {
     "dev": "vite",
