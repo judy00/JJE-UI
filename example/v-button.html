@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>email input example</title>
+    <title>jje button example</title>
     <link rel="stylesheet" href="../dist/index.css" />
   </head>
   <body>
     <div id="app">
       <div style="width: 500px; margin: 20px">
-        <v-button v-model="message" :options="options"></v-button>
+        <v-button :text="text" :options="options"></v-button>
       </div>
     </div>
     <script type="importmap">
@@ -27,14 +27,14 @@
           VButton,
         },
         setup() {
-          const message = ref("");
+          const text = ref("按鈕文字");
+          const options = ref({
+            // 'background-color': 'orange'
+          })
 
-          const options = {
-            suffix: ["@gmail.com", "@hotmail.com", "@yahoo.com"],
-          };
           return {
-            message,
-            options,
+            text,
+            options
           };
         },
       }).mount("#app");
